@@ -1,10 +1,5 @@
 #!/usr/bin/node
+/* task 1 writeme js */
 
 const fs = require('fs');
-const argv = process.argv;
-
-fs.writeFile(argv[2], argv[3], function (error) {
-  if (error) {
-    console.log(error);
-  }
-});
+fs.writeFileSync(process.argv[2], process.argv[3]);
