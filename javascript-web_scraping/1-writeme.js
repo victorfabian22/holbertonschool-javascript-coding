@@ -1,14 +1,8 @@
 #!/usr/bin/node
-// Argumento: archivo para escribir
-const path = process.argv[2];
-// Argumento: cadena para pasar al archivo
-const str = process.argv[3];
-
+// fs = module for working with files.
 const fs = require('fs');
-const util = require('util');
-
-fs.writeFile(path, str, 'utf8', (err) => {
+fs.writeFile(process.argv[2], process.argv[3], 'utf-8', (err) => {
   if (err) {
-    console.log(util.inspect(err, false, null, true));
+    console.error(err);
   }
 });
