@@ -1,10 +1,9 @@
 #!/usr/bin/node
-const URL = process.argv[2];
-const request = require('request');
+/* task 2 statuscode js */
 
-request.get(URL, (err, response) => {
-  if (err) {
-    console.error(`code: ${err}`);
+const request = require('request');
+request(process.argv[2], function (error, response) {
+  if (error == null) {
+    console.log('code: ' + response.statusCode);
   }
-  console.log(`code: ${response.statusCode}`);
 });

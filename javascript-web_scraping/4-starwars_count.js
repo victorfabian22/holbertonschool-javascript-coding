@@ -1,20 +1,21 @@
 #!/usr/bin/node
+/* task 4 starwars count js */
 
 const request = require('request');
-const url = process.argv[2];
-request.get(url, (err, respose, body) => {
-  if (err) {
-    console.log(err);
-  } else {
-    const films = JSON.parse(body).results;
-    let ct = 0;
-    for (const film of films) {
-      for (const character of film.characters) {
-        if (character.includes('18')) {
-          ct++;
+let nFilms = 0;
+
+request(process.argv[2], function (err, response, body) {
+  if (err == null) {
+    const resp = JSON.parse(body);
+    const results = resp.results;
+    for (let i = 0; i < results.length; i++) {
+      const characters = results[i].characters;
+      for (let j = 0; j < characters.length; j++) {
+        if (characters[j].search('18') > 0) {
+          nFilms++;
         }
       }
     }
-    console.log(ct);
   }
+  console.log(nFilms);
 });
