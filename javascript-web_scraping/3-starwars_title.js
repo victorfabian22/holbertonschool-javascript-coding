@@ -1,11 +1,12 @@
 #!/usr/bin/node
-/* task 3 starwars title js */
 
 const request = require('request');
-const id = process.argv[2];
-request('https://swapi-api.hbtn.io/api/films/' + id + '/', function (error, response, body) {
-  if (error == null) {
-    const json = JSON.parse(body);
-    console.log(json.title);
+const MovieId = process.argv[2];
+const url = 'https://swapi-api.hbtn.io/api/films/' + MovieId;
+request.get(url, function (err, response, body) {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log(JSON.parse(body).title);
   }
 });
